@@ -565,8 +565,9 @@ void setupWebServer() {
 // ----------------------------------------------------------------------
 
 void setupOTA() {
-  String hostname = "esp32car-" + String((uint32_t)ESP.getEfuseMac(), HEX);
-  
+  String hostname = "esp32c3-" + String(WiFi.macAddress());
+  hostname.replace(":", ""); // remove colons for clean name
+
   // 設定 OTA 參數
   ArduinoOTA.setHostname(hostname.c_str());
   ArduinoOTA.setPassword("mysecurepassword"); // 替換為您的密碼
